@@ -27,7 +27,6 @@ class API:
         except KeyError:
             raise APIException(f"Не удалось обработать {quote}")
 
-
         req = requests.get(f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/{base_ticker}")
         total = json.loads(req.content)
         total = float(total['conversion_rates'][quote_ticker]) * float(amount)
